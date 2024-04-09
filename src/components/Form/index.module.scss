@@ -1,0 +1,51 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+
+  input {
+    height: 54px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: #fff;
+    border: none;
+    margin-bottom: 15px;
+    color: #8f90a6;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 23px;
+    padding-left: 20px;
+  }
+
+  .forgotPassword {
+    color: #1daeff;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 15px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-bottom: 30px;
+  }
+  .createAccount {
+    border-radius: 14px;
+    border: 2px solid #1daeff;
+    width: 100%;
+    background: #1daeff;
+    height: 52px;
+    color: #fff;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 36px; /* 225% */
+    letter-spacing: 3.2px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+}
