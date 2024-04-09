@@ -8,7 +8,6 @@ import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 
 const AppRoutes: FC = () => {
   const auth = getAuth();
-
   const [user, setUser] = useState<User | null>(auth.currentUser);
 
   useEffect(() => {
@@ -17,20 +16,13 @@ const AppRoutes: FC = () => {
     });
 
     return () => unsubscribe();
-  }, [auth]);
-
-  if (user) {
-    return (
-      <Routes>
-        <Route path={TODO} element={<Todo />} />;
-      </Routes>
-    );
-  }
+  }, [user]);
 
   return (
     <Routes>
       <Route path={SIGN_UP} element={<Signup />} />
       <Route path={SIGN_IN} element={<Signin />} />
+      {user ? <Route path={TODO} element={<Todo />} /> : null}
     </Routes>
   );
 };

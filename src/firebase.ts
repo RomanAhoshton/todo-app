@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getFirestore } from "@firebase/firestore";
 
 const FIREBASE_API_KEY = "AIzaSyBTqQ_qundFGPOQt_YinVPDfRjlnqN9qR8";
 const FIREBASE_AUTH_DOMAIN = "todolistapp-908f6.firebaseapp.com";
@@ -18,3 +19,5 @@ export const firebaseConfig = {
   measurementId: FIREBASE_MEASUREMENT_ID,
 };
 const app = initializeApp(firebaseConfig);
+
+export const DB = getFirestore(app);

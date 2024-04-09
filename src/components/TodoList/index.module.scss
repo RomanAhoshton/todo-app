@@ -1,0 +1,14 @@
+.todoItem {
+  border: 2px solid #1daeff;
+  background-color: white;
+  margin-bottom: 15px;
+  color: #1daeff;
+  font-size: 18px;
+  display: flex;
+  border-radius: 20px;
+  padding: 15px;
+  padding-bottom: 0px;
+  .number {
+    margin-right: 15px;
+  }
+}

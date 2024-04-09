@@ -34,10 +34,14 @@ export const useLogin = () => {
             email: "",
             password: "",
           });
+          setIsAuthenticated(true);
           navigate(TODO);
         }
       } catch (error) {
-        console.log(error, "error Login");
+        if (error) {
+          setIsLoading(false);
+          alert(error);
+        }
       }
     }
   };

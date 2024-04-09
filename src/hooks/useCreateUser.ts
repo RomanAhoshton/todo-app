@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { userValues } from "../types";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { SIGN_IN } from "../helpers";
 
 export const useCreateUser = () => {
   const [userValues, setUserValues] = useState<userValues>({
@@ -9,6 +11,7 @@ export const useCreateUser = () => {
     confirmPassword: "",
   });
   const [isLoading, setIsLoading] = useState(false);
+  const navigation = useNavigate();
   const auth = getAuth();
 
   const createUser = async () => {
@@ -33,6 +36,7 @@ export const useCreateUser = () => {
             confirmPassword: "",
           });
           setIsLoading(false);
+          navigation(SIGN_IN);
         }
       } catch (error) {
         setIsLoading(false);
@@ -41,7 +45,8 @@ export const useCreateUser = () => {
           password: "",
           confirmPassword: "",
         });
-        console.log(error, "error from catch  ");
+
+        alert(error);
       }
     }
   };

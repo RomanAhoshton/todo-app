@@ -3,3 +3,8 @@ export interface userValues {
   password: string;
   confirmPassword?: string;
 }
+
+export interface TodoType {
+  text: string;
+  id: string;
+}

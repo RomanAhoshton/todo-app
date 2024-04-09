@@ -8,8 +8,6 @@ import { getAuth } from "firebase/auth";
 const Signin = () => {
   const { setUserValues, userValues, Login, isLoading } = useLogin();
   const auth = getAuth();
-  console.log(auth.currentUser, "current user");
-  console.log(userValues, "values");
 
   return (
     <div className={styles.signin}>
