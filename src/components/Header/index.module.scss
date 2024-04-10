@@ -7,7 +7,7 @@
   top: 0;
   z-index: 1000;
   box-shadow: 0px 17px 50px 0px rgba(143, 144, 166, 0.32);
-  background-color: white;
+  background-color: #0e1012;
   min-height: 70px;
 
   .container {
@@ -32,7 +32,7 @@
       width: 35px;
       border-radius: 50%;
       background-color: #1daeff;
-      color: white;
+      color: #0e1012;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -51,7 +51,7 @@
       flex-shrink: 0;
       border-radius: 14px;
       border: 2px solid #1daeff;
-      background-color: white;
+      background-color: #0e1012;
 
       @media (max-width: 1024px) {
         width: 100px;
