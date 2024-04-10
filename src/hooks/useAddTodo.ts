@@ -18,19 +18,21 @@ export const useAddTodo = () => {
   const addTodo = async () => {
     try {
       if (!currentUserId) {
-        throw new Error("User ID not available.");
+        alert("User  not available");
+        throw new Error("User is not available");
       }
 
-      if (!todoText) {
-        throw new Error("Todo text cannot be empty.");
+      if (todoText.trim() === "") {
+        alert("The field is empty");
+        throw new Error("The field is empty");
       }
 
-      const todoRef = doc(DB, "todo", currentUserId);
+      const todoRef = doc(DB, "todo", currentUserId!);
       const todoData: TodoData = { todo: [] };
 
       const todoDocSnapshot = await getDoc(todoRef);
       if (todoDocSnapshot.exists()) {
-        todoData.todo = todoDocSnapshot.data().todo || [];
+        todoData.todo = todoDocSnapshot.data().todo;
       }
 
       todoData.todo.push({ text: todoText, id: uuidv4() });

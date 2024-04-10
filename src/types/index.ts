@@ -1,7 +1,7 @@
 export interface userValues {
   email: string;
   password: string;
-  confirmPassword?: string;
+  name?: string;
 }
 
 export interface TodoType {

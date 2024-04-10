@@ -12,9 +12,9 @@ const Header = () => {
         <div className={styles.logo}>TODO</div>
         <div className={styles.currentUser}>
           <div className={styles.avatar}>
-            {auth.currentUser?.email?.charAt(0).toUpperCase()}
+            {auth.currentUser?.displayName?.charAt(0).toUpperCase()}
           </div>
-          <p className={styles.email}>{auth.currentUser?.email}</p>
+          <p className={styles.name}>{auth.currentUser?.displayName}</p>
         </div>
         <button className={styles.buttonLogOut} onClick={LogOut}>
           LOG OUT

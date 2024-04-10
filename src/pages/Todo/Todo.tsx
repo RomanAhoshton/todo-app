@@ -1,12 +1,10 @@
 import styles from "./index.module.scss";
 import Header from "../../components/Header";
 import { useAddTodo } from "../../hooks/useAddTodo";
-import { useGetTodo } from "../../hooks/useGetTodo";
 import TodoList from "../../components/TodoList";
 
 const Todo = () => {
   const { addTodo, todoText, setTodoText } = useAddTodo();
-  const { todo } = useGetTodo();
 
   return (
     <div className={styles.todo}>
@@ -26,11 +24,7 @@ const Todo = () => {
           </button>
         </div>
 
-        <TodoList todo={todo} />
-
-        {todo.length === 0 && (
-          <p className={styles.emptyTodoText}>Add your first task</p>
-        )}
+        <TodoList />
       </div>
     </div>
   );

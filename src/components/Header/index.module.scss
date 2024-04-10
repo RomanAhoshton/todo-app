@@ -19,9 +19,12 @@
       color: #1daeff;
       font-size: 30px;
     }
-    .email {
+    .name {
       font-size: 20px;
       color: #1daeff;
+      @media (max-width: 425px) {
+        display: none;
+      }
     }
 
     .avatar {

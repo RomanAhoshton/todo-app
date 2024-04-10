@@ -32,6 +32,12 @@
       font-weight: 700;
       line-height: 40px;
       text-align: center;
+      @media (max-width: 868px) {
+        font-size: 60px;
+      }
+      @media (max-width: 768px) {
+        font-size: 35px;
+      }
     }
 
     .hasAccount {
@@ -42,6 +48,9 @@
       font-style: normal;
       font-weight: 400;
       line-height: 20px;
+      @media (max-width: 425px) {
+        font-size: 25px;
+      }
 
       a {
         color: #1daeff;
@@ -50,6 +59,9 @@
         font-style: normal;
         font-weight: 400;
         line-height: 20px;
+        @media (max-width: 425px) {
+          font-size: 25px;
+        }
       }
     }
   }

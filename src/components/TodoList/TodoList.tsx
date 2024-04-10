@@ -1,22 +1,51 @@
 import styles from "./index.module.scss";
-import { TodoType } from "../../types";
+import { Reorder } from "framer-motion";
+import { useGetTodo } from "../../hooks/useGetTodo";
+import { DB } from "../../firebase";
+import { doc, updateDoc } from "@firebase/firestore";
+import { useEffect } from "react";
+import { getAuth } from "firebase/auth";
 
-interface TodoListType {
-  todo: TodoType[];
-}
+const TodoList = () => {
+  const { todo, setTodo } = useGetTodo();
+  const auth = getAuth();
+  const currentUserId = auth?.currentUser?.uid;
 
-const TodoList = ({ todo }: TodoListType) => {
+  useEffect(() => {
+    const unsubscribe = todo.length > 0 ? listenToTodo() : () => {};
+
+    return unsubscribe;
+  }, [todo]);
+
+  const listenToTodo = () => {
+    const todoRef = doc(DB, "todo", currentUserId!);
+    updateDoc(todoRef, { todo: todo });
+  };
+
   return (
-    <div>
+    <Reorder.Group
+      onReorder={setTodo}
+      values={todo}
+      axis="y"
+      style={{ listStyle: "none", padding: 0 }}
+    >
       {todo?.map((item, index) => {
         return (
-          <div key={item.id} className={styles.todoItem}>
-            <p className={styles.number}>{`${index + 1})`}</p>
-            <p className={styles.text}>{item.text}</p>
-          </div>
+          <Reorder.Item
+            value={item}
+            key={item.id}
+            whileDrag={{
+              scale: 1.1,
+            }}
+          >
+            <div className={styles.todoItem}>
+              <p className={styles.number}>{`${index + 1})`}</p>
+              <p className={styles.text}>{item.text}</p>
+            </div>
+          </Reorder.Item>
         );
       })}
-    </div>
+    </Reorder.Group>
   );
 };
 

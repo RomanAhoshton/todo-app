@@ -3,11 +3,9 @@ import { Link } from "react-router-dom";
 import Form from "../../components/Form";
 import { SIGN_UP } from "../../helpers";
 import { useLogin } from "../../hooks/useLogin";
-import { getAuth } from "firebase/auth";
 
 const Signin = () => {
   const { setUserValues, userValues, Login, isLoading } = useLogin();
-  const auth = getAuth();
 
   return (
     <div className={styles.signin}>

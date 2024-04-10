@@ -10,7 +10,7 @@ export const useLogin = () => {
     password: "",
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   const auth = getAuth();
 
   const navigate = useNavigate();
@@ -18,30 +18,37 @@ export const useLogin = () => {
   const Login = async () => {
     setIsLoading(true);
 
-    if (userValues.email && userValues.password !== "") {
-      try {
-        const result = await signInWithEmailAndPassword(
-          auth,
-          userValues.email,
-          userValues.password
-        );
+    try {
+      if (userValues.email.trim() === "") {
+        alert("Please enter the email");
+        throw new Error("Please enter the email");
+      }
+      if (userValues.password.trim() === "") {
+        alert("Please enter the password");
+        throw new Error("Please enter the password");
+      }
 
-        const user = result.user;
+      const result = await signInWithEmailAndPassword(
+        auth,
+        userValues.email,
+        userValues.password
+      );
 
-        if (user.uid) {
-          setIsLoading(false);
-          setUserValues({
-            email: "",
-            password: "",
-          });
-          setIsAuthenticated(true);
-          navigate(TODO);
-        }
-      } catch (error) {
-        if (error) {
-          setIsLoading(false);
-          alert(error);
-        }
+      const user = result.user;
+
+      if (user.uid) {
+        setIsLoading(false);
+        setUserValues({
+          email: "",
+          password: "",
+        });
+
+        navigate(TODO);
+      }
+    } catch (error) {
+      if (error) {
+        setIsLoading(false);
+        alert(error);
       }
     }
   };
@@ -50,7 +57,5 @@ export const useLogin = () => {
     Login,
     setUserValues,
     isLoading,
-    isAuthenticated,
-    setIsAuthenticated,
   };
 };

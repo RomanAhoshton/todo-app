@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { TodoType } from "../types";
 import { getAuth } from "firebase/auth";
 import { doc, onSnapshot } from "@firebase/firestore";
@@ -13,7 +13,7 @@ export const useGetTodo = () => {
   const auth = getAuth();
   const currentUserId = auth?.currentUser?.uid;
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const unsubscribe = currentUserId ? listenToTodo() : () => {};
 
     return unsubscribe;
@@ -24,6 +24,7 @@ export const useGetTodo = () => {
     return onSnapshot(todoRef, (doc) => {
       if (doc.exists()) {
         const todoData = doc.data() as TodoData;
+
         setTodo(todoData.todo);
       } else {
         setTodo([]);
@@ -31,5 +32,5 @@ export const useGetTodo = () => {
     });
   };
 
-  return { todo };
+  return { todo, listenToTodo, setTodo };
 };

@@ -21,6 +21,21 @@ const Form = ({
 
   return (
     <form className={styles.form}>
+      {location.pathname === SIGN_UP && (
+        <input
+          type="text"
+          className={styles.password}
+          placeholder="Full Name"
+          onChange={(e) =>
+            setUserValues({
+              email: userValues.email,
+              password: userValues.password,
+              name: e.target.value,
+            })
+          }
+          value={userValues.name}
+        />
+      )}
       <input
         type="text"
         className={styles.email}
@@ -29,7 +44,7 @@ const Form = ({
           setUserValues({
             email: e.target.value,
             password: userValues.password,
-            confirmPassword: userValues.confirmPassword,
+            name: userValues.name,
           })
         }
         value={userValues.email}
@@ -43,26 +58,11 @@ const Form = ({
           setUserValues({
             email: userValues.email,
             password: e.target.value,
-            confirmPassword: userValues.confirmPassword,
+            name: userValues.name,
           })
         }
         value={userValues.password}
       />
-      {location.pathname === SIGN_UP && (
-        <input
-          type="password"
-          className={styles.password}
-          placeholder="Confirm your password"
-          onChange={(e) =>
-            setUserValues({
-              email: userValues.email,
-              password: userValues.password,
-              confirmPassword: e.target.value,
-            })
-          }
-          value={userValues.confirmPassword}
-        />
-      )}
 
       <button
         type="button"
